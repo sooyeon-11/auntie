@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+body{line-height: 1.5;  font-family: "Noto Sans KR", serif; overflow-x: hidden;}
+.inner{width: 1600px; margin: 0 auto;}
+
+/* header */
+#header .inner { padding: 20px 0 ; display: flex; justify-content: space-between; align-items: center;}
+#header .gnb{display: flex;}
+#header .gnb li a{padding: 10px 40px; font-size: 17px; font-weight: 700;}
+#header .gnb li a:hover{color: #ff9e1a;}
+#header .ham {background: url("../images/ham.svg") no-repeat center center / 80%; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 0; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);}
+
+/* main */
+#main h2::before{content: "auntie anne's"; font-size: 20px; color: #ff9e1a; display: block;}
+#main h2{text-transform: capitalize; font-weight: 400; font-family: "DM Serif Display", serif;  font-size: 80px; color: #005ad5; }
+#main h2 + p{color: #999999;}
+
+/* main_banner */
+.main_banner{text-align: center;}
+
+/* menu */
+@keyframes swing {
+  0%,100%{transform: rotate(-3deg);}
+  50%{transform: rotate(3deg);}
+}
+
+.menu { text-align: center; padding: 200px;}
+.menu ul{display: flex; align-items: flex-start;}
+.menu ul li{display: flex; text-align: left; align-items: center; position: relative; width: 50%;} 
+.menu ul li::before{ transition: all 0.5s; transform: scale(0); content: url("../images/circle_dot.png"); position: absolute; left: calc(50% - 240px) ; top: 0;}
+.menu ul li:hover::before{transform: scale(1);}
+.menu ul li:nth-child(2) {margin-top: 100px;}
+.menu ul li dt {font-size: 30px; font-weight: 700; padding-bottom: 30px;}
+.menu ul li dd {font-size: 18px; color: #8e8e8e;}
+
+.menu ul li a{animation: swing 2s infinite;}
+
+/* brand */
+.brand { position: relative; height: 700px; overflow: hidden;}
+.brand video{object-fit: cover; width: 100% ; height: 100%;}
+.brand_txt{position: absolute; left: 50%; top: 50%; text-align: center; transform: translate(-50%, -50%);}
+.brand_txt a{ transition: all 0.5s; display: inline-block; margin-top: 50px ;}
+.brand_txt a:hover{transform: rotate(90deg) scale(1.1);}
+
+/* sns */
+.sns{text-align: center; padding-top: 200px;}
+.sns ul{display: flex; gap:50px; padding-top: 40px;}
+.sns ul li{ position: relative; width: calc((100% - 150px) / 4); border-radius: 50% 50% 0 0; overflow: hidden;}
+.sns ul li img{width: 100%; display: block;}
+.sns ul li a::before{ transition: all 0.5s; opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; content: ""; background: url("../images/insta_fill.png") no-repeat center center rgba(0, 0, 0, 0.8);}
+.sns ul li a:hover::before{opacity: 1;}
+
+/* news */
+
+/* footer */

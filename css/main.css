@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/* body 가로스크롤 방지 */
+body{ overflow-x: hidden; line-height: 1.5; font-family: "Noto Sans KR", serif; }
+.inner{width: 1600px; margin: 0 auto;}
+
+@keyframes rotate{
+  0% { transform: rotate(0);}
+  100%{ transform: rotate(360deg);}
+}
+
+/* header */
+#header::after { z-index: 2; animation: rotate 20s infinite linear; position: absolute;  left: calc(50% + 680px); top: -100px; content: url("../images/circle_txt.png");}
+/* 위치 고정할때  left: calc(50% + 680px); 지정값 넣어주기 */
+
+#header .inner { padding: 20px 0; align-items: center; display: flex; justify-content: space-between;}
+#header nav{margin-left: auto; margin-right: 50px;}
+#header .gnb { display: flex;}
+#header .gnb > li {position: relative;}
+#header .gnb > li > a{display: block; padding: 10px 40px; font-size: 18px; font-weight: 700;}
+#header .gnb > li:hover > a{color: #ff9e1a}
+
+/* 2차메뉴 hover */
+#header .gnb > li .depth2 { z-index: 3; display: none; left: calc(50% - 100px); position: absolute; background: #fff; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); width: 200px; padding: 20px 0;} 
+#header .gnb > li:hover .depth2 { display: block;}
+
+/* 너비를 200px 줘서 100px 빼서 맞추는 것 */
+#header .gnb > li .depth2 li a { transition: all 0.5s; display: block; padding: 5px 20px;}
+#header .gnb > li .depth2 li a:hover { background: #ff9e1a; color: #fff;}
+
+#header .ham { position: relative; z-index: 4; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); font-size: 0; background: url("../images/ham.svg") no-repeat center center / 80% ;}
+
+/* main */
+#main h2 { text-transform: capitalize; font-weight: 400; font-size: 80px; color: #005ad5; font-family: "DM Serif Display", serif; }
+#main h2::before { font-size: 20px; color: #ff9e1a; display: block; content: "auntie anne's";}
+#main h2 + p { color: #999999; font-size: 20px;}
+
+/* main_banner */
+.main_banner{text-align: center;}
+
+/* menu */
+@keyframes swing {
+  0%,100% { transform: rotate(-3deg);}
+  50% { transform: rotate(3deg);}
+}
+
+.menu { padding: 200px; text-align: center;}
+.menu ul{display: flex; align-items: flex-start;}/* align-items: flex-start 이걸 넣어줘야 위아래 공간을 다르게 하는게 적용이된다  */
+.menu ul li { position: relative; text-align: left; width: 50%; display: flex; align-items: center; }
+
+.menu ul li:nth-child(2) { margin-top: 100px;}
+
+.menu ul li::before {transition: all 0.5s; transform: scale(0); position: absolute; left: calc(50% - 240px); top: 0; content: url("../images/circle_dot.png");}
+
+.menu ul li:hover::before{transform: scale(1);} /* 띄어쓰기 하지 말기 */
+
+.menu ul li dl dt{ font-size: 30px; font-weight: 700 ; padding-bottom: 30px;}
+.menu ul li dl dd{ font-size: 18px; color: #999;}
+
+.menu ul li a {animation: swing 2s infinite;}
+
+/* brand */
+.brand {  position: relative; height: 700px; overflow: hidden;}
+/* 멀티미디어 요소를 배경처럼 화면에 채우는 역할 */
+.brand video {object-fit: cover; width: 100%; height: 100%;}
+.brand .brand_txt{ position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;}
+.brand .brand_txt a { transition: all 0.5s; display: inline-block; margin-top: 50px;}
+.brand .brand_txt a:hover{transform: rotate(90deg) scale(1.1);}
+
+/* insta */
+.insta{text-align: center; padding-top: 200px;}
+.insta ul{/* display: flex; gap: 50px; */ margin-top: 50px;}
+/* hover 했을 때 기존에 사용하던 방법인 html에서 작성후 올리는게 아닌 css에서 before을 사용해서 설정을 완료함 */
+.insta ul li { position: relative;/*  width: calc((100% - 150px) / 4); */ border-radius: 50% 50% 0 0; overflow: hidden;}
+.insta ul li img{width: 100%; display: block;}
+.insta ul li a::before{ transition: all 0.5s; opacity: 0; content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8) url("../images/insta_fill.png") no-repeat center center;}
+.insta ul li:hover a::before{opacity: 1;}
+
+/* news */
+.news{ position: relative; background: #eaf4ff; padding: 200px 0; overflow: hidden;}
+.news .rotate_dot{ animation: rotate 20s linear infinite; position: absolute; left: -100px; bottom: -100px; width: 483px; height: 483px; background: url("../images/circle_dot.png");}
+.news .inner{ display: flex; gap: 50px;} /* 크기가 다 달라서 최소한의 공간을 gap으로 주고 각자 공간을 넣어준다 */
+.news .news_title{width: 400px;}
+.news .news_title h2{line-height: 1.2;} 
+
+.news .event { position: relative; width: 500px; overflow: hidden;}
+.news .event img{ display: block; width: 100%;}
+.news .event span{ transition: all 0.5s; position: absolute; background: rgba(0, 0, 0, 0.8); left: 0; bottom: -200px; width: 100%; color: #fff; padding: 30px; font-size: 20px;}
+.news .event:hover span { bottom: 0; }
+
+.news .notice { width: 600px;}
+.news .notice li{ position: relative;  font-size: 20px; padding: 50px 0; display: block;  border-top: 1px solid #ddd;}
+.news .notice li dl dd {padding-top: 10px; color: #999; }
+
+.news .notice a{ transition: all 0.5s; opacity: 0; width: 100%; height: 100%; position: absolute; left: -20px; top: 0;  text-align: right;}
+.news .notice li:hover a{opacity: 1; left: 0;}
+.news .notice img{height: 100%;}
+
+/* footer */
+#footer { text-align: center; color: #fff;}
+#footer .footer_top{padding: 50px 0; background: #005ad5;}
+#footer .footer_top .sns{display: flex; justify-content: center; margin: 20px 0;}
+#footer .footer_top address{color: rgba(255, 255, 255, 0.5);}
+#footer .footer_bottom{background: #ff9e1a; padding: 20px 0; font-size: 13px;}
+
+/* gotop */
+.gotop { background: url("../images/gotop.png") no-repeat center 30px / 15% #fff; position: fixed; right: 50px; bottom: 50px; width: 80px; height: 80px; border-radius: 50%; padding: 40px 20px 25px ; color: #ffa223; font-size: 13px; text-transform: capitalize; text-align: center; font-weight: 700;}
